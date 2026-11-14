@@ -11,10 +11,19 @@
   <p>JSON-LD contexts for the verifiable credentials of the master thesis "Enhancing Software Supply Chain Security
     Through Verifiable Identity Chains and Impersonation Prevention" (TU Berlin).</p>
   <p>Published contexts never change. A change gets a new version.</p>
-  <dl>
-    <dt><a href="role/v1.jsonld">role/v1.jsonld</a></dt>
-    <dd>Context for <code>RoleCredential</code>. <a href="role/v1">Vocabulary</a> with the meaning of each term and
-      the possible roles, and <a href="role/v1.schema.json">JSON Schema</a> that checks the credential.</dd>
-  </dl>
+  <section class="term">
+    <h2 id="role-v1">RoleCredential v1</h2>
+    <p>Grants an actor (person, stage or service) one role in the pipeline of one repository.</p>
+    <dl>
+      <dt>Context</dt>
+      <dd><a href="role/v1.jsonld"><code>https://chain-of-trust-lab.github.io/contexts/role/v1.jsonld</code></a></dd>
+      <dt>Vocabulary</dt>
+      <dd><a href="role/v1">Role vocabulary v1</a>: the meaning of each term, the actor types and the possible
+        roles.</dd>
+      <dt>JSON Schema</dt>
+      <dd><a href="role/v1.schema.json"><code>https://chain-of-trust-lab.github.io/contexts/role/v1.schema.json</code></a>
+        checks a credential, including that the actor type fits the role.</dd>
+    </dl>
+  </section>
 </body>
 </html>
