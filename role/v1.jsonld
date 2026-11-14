@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "RoleCredential": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/role/v1#RoleCredential",
+      "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "role": "https://chain-of-trust-lab.github.io/contexts/role/v1#role",
+        "scope": "https://chain-of-trust-lab.github.io/contexts/role/v1#scope"
+      }
+    },
+    "role": "https://chain-of-trust-lab.github.io/contexts/role/v1#role",
+    "scope": "https://chain-of-trust-lab.github.io/contexts/role/v1#scope"
+  }
+}
