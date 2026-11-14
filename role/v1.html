@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css">
   <title>Role vocabulary v1</title>
   <script type="application/ld+json">
   {
@@ -109,10 +110,12 @@
   <p>Terms of the <a href="v1.jsonld">RoleCredential v1 context</a>. Credentials are checked with the
     <a href="v1.schema.json">RoleCredential v1 JSON Schema</a>. This page never changes; a change gets a new version.</p>
 
-  <h2 id="RoleCredential">RoleCredential</h2>
-  <p>Class. A verifiable credential issued by the organization that grants its subject one role in the pipeline of one
-    repository. The holder is <code>credentialSubject.id</code>, the kind of actor it is
-    <code>credentialSubject.type</code>, and the issue time <code>issuanceDate</code>.</p>
+  <section class="term">
+    <h2 id="RoleCredential">RoleCredential</h2>
+    <p>Class. A verifiable credential issued by the organization that grants its subject one role in the pipeline of one
+      repository. The holder is <code>credentialSubject.id</code>, the kind of actor it is
+      <code>credentialSubject.type</code>, and the issue time <code>issuanceDate</code>.</p>
+  </section>
 
   <h2>Actor types</h2>
   <p>The value of <code>credentialSubject.type</code>. Each role belongs to one type.</p>
@@ -125,15 +128,21 @@
     <dd>A long-running service outside the pipeline steps. Roles: Release Custodian, Deploy Gate.</dd>
   </dl>
 
-  <h2 id="Role">Role</h2>
-  <p>Class. A pipeline role. Its values are listed below.</p>
+  <section class="term">
+    <h2 id="Role">Role</h2>
+    <p>Class. A pipeline role. Its values are listed below.</p>
+  </section>
 
-  <h2 id="role">role</h2>
-  <p>Property. The pipeline role granted to the credential subject. Its value is one of the roles below.</p>
+  <section class="term">
+    <h2 id="role">role</h2>
+    <p>Property. The pipeline role granted to the credential subject. Its value is one of the roles below.</p>
+  </section>
 
-  <h2 id="scope">scope</h2>
-  <p>Property. The repository the role applies to, as its GitHub URL, for example
-    <code>https://github.com/chain-of-trust-lab/rest-api</code>.</p>
+  <section class="term">
+    <h2 id="scope">scope</h2>
+    <p>Property. The repository the role applies to, as its GitHub URL, for example
+      <code>https://github.com/chain-of-trust-lab/rest-api</code>.</p>
+  </section>
 
   <h2>Roles</h2>
   <dl>

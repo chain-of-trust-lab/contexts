@@ -1,0 +1,56 @@
+/* Fonts and colors of the W3C vocabulary pages (https://www.w3.org/StyleSheets/TR/2021/base.css). */
+:root {
+  color-scheme: light;
+  --text: black;
+  --bg: white;
+  --heading-text: #005a9c;
+  --a-normal-text: #034575;
+  --a-normal-underline: #707070;
+  --a-visited-underline: #bbb;
+  --a-active-text: #c00;
+  --term-border: darkgrey;
+}
+
+body {
+  max-width: 50em;
+  margin: 0 auto 4em;
+  padding: 1.6em 1.5em 0;
+  line-height: 1.5;
+  font-family: sans-serif;
+  overflow-wrap: break-word;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+h1, h2, h3, dt {
+  font: 100% sans-serif;
+  font-family: inherit;
+  line-height: 1.2;
+}
+h1, h2, h3 { color: var(--heading-text); }
+h1 { font-size: 220%; font-weight: bold; margin: 0 0 .5em; }
+h2 { font-size: 140%; margin-top: 3rem; }
+h3 { font-size: 120%; margin-top: 2rem; }
+dt { font-weight: bold; }
+dd { margin-left: 2em; margin-bottom: .75em; }
+
+pre, code {
+  font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
+  font-size: .9em;
+}
+
+a[href] {
+  color: var(--a-normal-text);
+  text-decoration-color: var(--a-normal-underline);
+  text-decoration-skip-ink: none;
+}
+a:visited { text-decoration-color: var(--a-visited-underline); }
+a[href]:focus, a[href]:hover { text-decoration-thickness: 2px; }
+a[href]:active { color: var(--a-active-text); text-decoration-color: var(--a-active-text); }
+
+section.term { border-bottom: 1px solid var(--term-border); padding-bottom: .5em; }
+
+@media (max-width: 30em) {
+  body { padding: 1em 16px 0; }
+  h1 { font-size: 170%; }
+}
