@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Role vocabulary v1</title>
+  <script type="application/ld+json">
+  {
+    "@context": {
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "cred": "https://www.w3.org/2018/credentials#",
+      "v": "https://chain-of-trust-lab.github.io/contexts/role/v1#"
+    },
+    "@graph": [
+      {
+        "@id": "v:RoleCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "cred:VerifiableCredential" },
+        "rdfs:label": "Role credential",
+        "rdfs:comment": "Issued by the organization. Grants its subject one role in the pipeline of one repository."
+      },
+      {
+        "@id": "v:Person",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Person",
+        "rdfs:comment": "A human actor who acts through their own agent. Holds the Authorized Maintainer or Release Approver role."
+      },
+      {
+        "@id": "v:Stage",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Stage",
+        "rdfs:comment": "An automated pipeline stage with its own agent and runner. Holds the Builder, Tester or Publisher role."
+      },
+      {
+        "@id": "v:Service",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Service",
+        "rdfs:comment": "A long-running service outside the pipeline steps. Holds the Release Custodian or Deploy Gate role."
+      },
+      {
+        "@id": "v:Role",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Role",
+        "rdfs:comment": "A pipeline role. The values are the instances of this class defined here."
+      },
+      {
+        "@id": "v:role",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "v:Role" },
+        "rdfs:label": "role",
+        "rdfs:comment": "The pipeline role granted to the credential subject."
+      },
+      {
+        "@id": "v:scope",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "rdfs:Resource" },
+        "rdfs:label": "scope",
+        "rdfs:comment": "The repository the role applies to, as its GitHub URL."
+      },
+      {
+        "@id": "v:AuthorizedMaintainer",
+        "@type": "v:Role",
+        "rdfs:label": "Authorized Maintainer",
+        "rdfs:comment": "A person allowed to commit to the repository. Issues Source committed credentials."
+      },
+      {
+        "@id": "v:ReleaseApprover",
+        "@type": "v:Role",
+        "rdfs:label": "Release Approver",
+        "rdfs:comment": "A person who approves a built image for release. Issues Image approved credentials."
+      },
+      {
+        "@id": "v:Builder",
+        "@type": "v:Role",
+        "rdfs:label": "Builder",
+        "rdfs:comment": "The build stage. Issues Package built and Image built credentials."
+      },
+      {
+        "@id": "v:Tester",
+        "@type": "v:Role",
+        "rdfs:label": "Tester",
+        "rdfs:comment": "The test stage. Issues the tested credentials."
+      },
+      {
+        "@id": "v:Publisher",
+        "@type": "v:Role",
+        "rdfs:label": "Publisher",
+        "rdfs:comment": "The deliver stage. Publishes the package and the image, and issues the published credentials."
+      },
+      {
+        "@id": "v:DeployGate",
+        "@type": "v:Role",
+        "rdfs:label": "Deploy Gate",
+        "rdfs:comment": "Verifies the chain of step credentials before deployment. Issues Image deployed credentials."
+      },
+      {
+        "@id": "v:ReleaseCustodian",
+        "@type": "v:Role",
+        "rdfs:label": "Release Custodian",
+        "rdfs:comment": "The project's release holder. Collects the step credentials and presents the chain to the deploy gate."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Role vocabulary v1</h1>
+  <p>Terms of the <a href="v1.jsonld">RoleCredential v1 context</a>. Credentials are checked with the
+    <a href="v1.schema.json">RoleCredential v1 JSON Schema</a>. This page never changes; a change gets a new version.</p>
+
+  <h2 id="RoleCredential">RoleCredential</h2>
+  <p>Class. A verifiable credential issued by the organization that grants its subject one role in the pipeline of one
+    repository. The holder is <code>credentialSubject.id</code>, the kind of actor it is
+    <code>credentialSubject.type</code>, and the issue time <code>issuanceDate</code>.</p>
+
+  <h2>Actor types</h2>
+  <p>The value of <code>credentialSubject.type</code>. Each role belongs to one type.</p>
+  <dl>
+    <dt id="Person"><code>Person</code></dt>
+    <dd>A human actor who acts through their own agent. Roles: Authorized Maintainer, Release Approver.</dd>
+    <dt id="Stage"><code>Stage</code></dt>
+    <dd>An automated pipeline stage with its own agent and runner. Roles: Builder, Tester, Publisher.</dd>
+    <dt id="Service"><code>Service</code></dt>
+    <dd>A long-running service outside the pipeline steps. Roles: Release Custodian, Deploy Gate.</dd>
+  </dl>
+
+  <h2 id="Role">Role</h2>
+  <p>Class. A pipeline role. Its values are listed below.</p>
+
+  <h2 id="role">role</h2>
+  <p>Property. The pipeline role granted to the credential subject. Its value is one of the roles below.</p>
+
+  <h2 id="scope">scope</h2>
+  <p>Property. The repository the role applies to, as its GitHub URL, for example
+    <code>https://github.com/chain-of-trust-lab/rest-api</code>.</p>
+
+  <h2>Roles</h2>
+  <dl>
+    <dt id="AuthorizedMaintainer"><code>AuthorizedMaintainer</code>: Authorized Maintainer</dt>
+    <dd>A person allowed to commit to the repository. Issues Source committed credentials.</dd>
+    <dt id="ReleaseApprover"><code>ReleaseApprover</code>: Release Approver</dt>
+    <dd>A person who approves a built image for release. Issues Image approved credentials.</dd>
+    <dt id="Builder"><code>Builder</code>: Builder</dt>
+    <dd>The build stage. Issues Package built and Image built credentials.</dd>
+    <dt id="Tester"><code>Tester</code>: Tester</dt>
+    <dd>The test stage. Issues the tested credentials.</dd>
+    <dt id="Publisher"><code>Publisher</code>: Publisher</dt>
+    <dd>The deliver stage. Publishes the package and the image, and issues the published credentials.</dd>
+    <dt id="DeployGate"><code>DeployGate</code>: Deploy Gate</dt>
+    <dd>Verifies the chain of step credentials before deployment. Issues Image deployed credentials.</dd>
+    <dt id="ReleaseCustodian"><code>ReleaseCustodian</code>: Release Custodian</dt>
+    <dd>The project's release holder. Collects the step credentials and presents the chain to the deploy gate.</dd>
+  </dl>
+</body>
+</html>

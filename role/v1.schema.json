@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chain-of-trust-lab.github.io/contexts/role/v1.schema.json",
+  "title": "RoleCredential v1",
+  "description": "A W3C verifiable credential that grants its subject one role in the pipeline of one repository. Terms: https://chain-of-trust-lab.github.io/contexts/role/v1",
+  "type": "object",
+  "required": ["@context", "type", "issuer", "issuanceDate", "credentialSubject"],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "https://www.w3.org/2018/credentials/v1" },
+        { "const": "https://chain-of-trust-lab.github.io/contexts/role/v1.jsonld" }
+      ],
+      "minItems": 2
+    },
+    "type": {
+      "type": "array",
+      "allOf": [
+        { "contains": { "const": "VerifiableCredential" } },
+        { "contains": { "const": "RoleCredential" } }
+      ]
+    },
+    "issuer": {
+      "description": "The organization that grants the role.",
+      "oneOf": [
+        { "$ref": "#/$defs/did" },
+        { "type": "object", "required": ["id"], "properties": { "id": { "$ref": "#/$defs/did" } } }
+      ]
+    },
+    "issuanceDate": { "type": "string", "format": "date-time" },
+    "credentialSubject": {
+      "type": "object",
+      "required": ["id", "type", "role", "scope"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "description": "The holder of the role.", "$ref": "#/$defs/did" },
+        "type": {
+          "description": "What kind of actor the holder is.",
+          "enum": ["Person", "Stage", "Service"]
+        },
+        "role": {
+          "description": "The pipeline role granted to the holder.",
+          "enum": [
+            "AuthorizedMaintainer",
+            "ReleaseApprover",
+            "Builder",
+            "Tester",
+            "Publisher",
+            "DeployGate",
+            "ReleaseCustodian"
+          ]
+        },
+        "scope": {
+          "description": "The repository the role applies to.",
+          "type": "string",
+          "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "role": { "enum": ["AuthorizedMaintainer", "ReleaseApprover"] } } },
+          "then": { "properties": { "type": { "const": "Person" } } }
+        },
+        {
+          "if": { "properties": { "role": { "enum": ["Builder", "Tester", "Publisher"] } } },
+          "then": { "properties": { "type": { "const": "Stage" } } }
+        },
+        {
+          "if": { "properties": { "role": { "enum": ["DeployGate", "ReleaseCustodian"] } } },
+          "then": { "properties": { "type": { "const": "Service" } } }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "did": { "type": "string", "pattern": "^did:sov:[1-9A-HJ-NP-Za-km-z]{21,22}$" }
+  }
+}

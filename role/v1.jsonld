@@ -2,16 +2,27 @@
   "@context": {
     "@version": 1.1,
     "@protected": true,
-    "RoleCredential": {
-      "@id": "https://chain-of-trust-lab.github.io/contexts/role/v1#RoleCredential",
+    "RoleCredential": "https://chain-of-trust-lab.github.io/contexts/role/v1#RoleCredential",
+    "Person": "https://chain-of-trust-lab.github.io/contexts/role/v1#Person",
+    "Stage": "https://chain-of-trust-lab.github.io/contexts/role/v1#Stage",
+    "Service": "https://chain-of-trust-lab.github.io/contexts/role/v1#Service",
+    "role": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/role/v1#role",
+      "@type": "@vocab",
       "@context": {
-        "@version": 1.1,
         "@protected": true,
-        "role": "https://chain-of-trust-lab.github.io/contexts/role/v1#role",
-        "scope": "https://chain-of-trust-lab.github.io/contexts/role/v1#scope"
+        "AuthorizedMaintainer": "https://chain-of-trust-lab.github.io/contexts/role/v1#AuthorizedMaintainer",
+        "ReleaseApprover": "https://chain-of-trust-lab.github.io/contexts/role/v1#ReleaseApprover",
+        "Builder": "https://chain-of-trust-lab.github.io/contexts/role/v1#Builder",
+        "Tester": "https://chain-of-trust-lab.github.io/contexts/role/v1#Tester",
+        "Publisher": "https://chain-of-trust-lab.github.io/contexts/role/v1#Publisher",
+        "DeployGate": "https://chain-of-trust-lab.github.io/contexts/role/v1#DeployGate",
+        "ReleaseCustodian": "https://chain-of-trust-lab.github.io/contexts/role/v1#ReleaseCustodian"
       }
     },
-    "role": "https://chain-of-trust-lab.github.io/contexts/role/v1#role",
-    "scope": "https://chain-of-trust-lab.github.io/contexts/role/v1#scope"
+    "scope": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/role/v1#scope",
+      "@type": "@id"
+    }
   }
 }
