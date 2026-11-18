@@ -23,6 +23,8 @@
       <dt>JSON Schema</dt>
       <dd><a href="role/v1.schema.json"><code>https://chain-of-trust-lab.github.io/contexts/role/v1.schema.json</code></a>
         checks a credential, including that the actor type fits the role.</dd>
+      <dt>Examples</dt>
+      <dd>The seven role credentials of the <a href="#examples">end-to-end example</a>.</dd>
     </dl>
   </section>
   <section class="term">
@@ -39,9 +41,9 @@
       <dd><a href="provenance/v1.schema.json"><code>https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json</code></a>
         checks a credential, including the fields that belong to its step type.</dd>
       <dt>Examples</dt>
-      <dd><a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples">One run of ten
-        signed credentials</a>, plus invalid ones the schema rejects. They are signed with example keys, not the
-        pipeline's.</dd>
+      <dd>The ten credentials of one pipeline run in the <a href="#examples">end-to-end example</a>, and
+        <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples/invalid">invalid ones</a>
+        the schema rejects.</dd>
     </dl>
   </section>
   <h2 id="role-and-provenance">Role and provenance</h2>
@@ -56,9 +58,17 @@
       <tr><td>Subject</td><td>an actor (person, stage or service)</td><td>an artifact, by digest</td></tr>
       <tr><td>Issuer</td><td>the organization</td><td>the actor that did the step</td></tr>
       <tr><td>Example</td><td>the build agent is a Builder for <code>rest-api</code></td>
-        <td>package <code>sha256:…</code> was built from commit <code>9505cac…</code></td></tr>
+        <td>package <code>sha256:…</code> was built from commit <code>32f6217…</code></td></tr>
     </tbody>
   </table>
   </div>
+  <h2 id="examples">End-to-end example</h2>
+  <p><a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples">One consistent scenario</a> for
+    <code>chain-of-trust-lab/rest-api</code>: the organization gives seven agents their
+    <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples/role">role credentials</a>, then one
+    pipeline run issues the ten
+    <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples/provenance">provenance credentials</a>
+    of one commit, each by the agent that holds the step's role. The data is made up but fits together, and every
+    credential is signed, with example keys that are not on any ledger.</p>
 </body>
 </html>

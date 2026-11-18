@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
+  ],
+  "id": "urn:uuid:ece6f7e2-4ed3-5a2b-b306-ceeb4d3b3b88",
+  "type": [
+    "VerifiableCredential",
+    "ProvenanceCredential",
+    "SourceCommittedCredential"
+  ],
+  "issuer": "did:sov:6StKqB4QruRydr4JA8WQMT",
+  "issuanceDate": "2026-11-19T09:14:22Z",
+  "credentialSchema": {
+    "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "id": "urn:git:sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91",
+    "type": "SourceRevision",
+    "name": "https://github.com/chain-of-trust-lab/rest-api",
+    "digest": "sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91",
+    "step": "commit",
+    "pipelineRun": {
+      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
+      "repository": "https://github.com/chain-of-trust-lab/rest-api",
+      "workflow": ".github/workflows/pipeline.yml",
+      "workflowDigest": "sha256:210ceb8c3a3d9e1fbc7e9ce77bad7dc27ea92bacfe4dc484ff8ae74e14052218",
+      "runId": "19482736105",
+      "runAttempt": "1"
+    }
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "verificationMethod": "did:sov:6StKqB4QruRydr4JA8WQMT#key-1",
+    "created": "2026-11-19T09:14:22+00:00",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..lKcVbCxZA4weafsM_0iN4j4wqwEtDU1sEq_-onqOIsjHN1XPTEcKbxPdcojjBkxMp2icZKPCHZSlFQ1TQ7FXAw"
+  }
+}

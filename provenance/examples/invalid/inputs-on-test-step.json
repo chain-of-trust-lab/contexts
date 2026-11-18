@@ -3,44 +3,44 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
   ],
-  "id": "urn:uuid:fc12cd5a-6a05-5354-b11d-bcb76ca851c3",
+  "id": "urn:uuid:fcebbc12-34e1-55d7-8ab5-8c40c462ebcd",
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
     "PackageTestedCredential"
   ],
-  "issuer": "did:sov:GGzcEJa6e9CpDnEgAvFaat",
-  "issuanceDate": "2026-11-18T12:00:00Z",
+  "issuer": "did:sov:C1wnJ6gyFZdmN4smVAyCoV",
+  "issuanceDate": "2026-11-19T09:20:05Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
   },
   "credentialSubject": {
-    "id": "urn:sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd",
+    "id": "urn:sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
     "type": "Package",
-    "name": "pkg:maven/lab.chainoftrust/rest-api@0.1.0",
-    "digest": "sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd",
+    "name": "pkg:maven/com.github.chain-of-trust-lab/rest-api@0.0.1-32f62178379e",
+    "digest": "sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
     "step": "test-package",
     "result": "Passed",
-    "reportDigest": "sha256:91ddf6cb5fc6a07028dc58287dc7f9027c295f9c4dc6e5f3eaae74259ceb1b98",
+    "reportDigest": "sha256:62d963b0cb030b6c2836dcb7257ae211232153d56a4524143b4ee6529ecc6ff1",
     "previousCredential": {
-      "id": "urn:uuid:ed53acde-8018-5497-a3ed-efe8bc8e346f",
-      "credentialDigest": "sha256:d67805881745f378a3f868d01c928b3c6ac21d4a7b06b559214843602b123bda"
+      "id": "urn:uuid:891ded13-7cd8-51d5-b6c8-ebc0116dbcab",
+      "credentialDigest": "sha256:a9343ac2d6ea1cc451523b9f4ecf5e96cbd3d940b09ba68c40900fbf1efcd2ab"
     },
     "pipelineRun": {
-      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/1234567890/attempts/1",
+      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
       "repository": "https://github.com/chain-of-trust-lab/rest-api",
-      "workflow": ".github/workflows/chain.yml",
-      "workflowDigest": "sha256:dfb9bee1605664e38938a105bf011417a28b4d1df5b8ffadea22c34cfa547340",
-      "runId": "1234567890",
+      "workflow": ".github/workflows/pipeline.yml",
+      "workflowDigest": "sha256:210ceb8c3a3d9e1fbc7e9ce77bad7dc27ea92bacfe4dc484ff8ae74e14052218",
+      "runId": "19482736105",
       "runAttempt": "1"
     },
     "inputs": [
       {
-        "id": "urn:git:sha1:9505cacb7c710ed17125fcc6cb3669e8ddca6c8c",
+        "id": "urn:git:sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91",
         "type": "SourceRevision",
         "name": "https://github.com/chain-of-trust-lab/rest-api",
-        "digest": "sha1:9505cacb7c710ed17125fcc6cb3669e8ddca6c8c"
+        "digest": "sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91"
       }
     ]
   }

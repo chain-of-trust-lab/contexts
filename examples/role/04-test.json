@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://chain-of-trust-lab.github.io/contexts/role/v1.jsonld"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "RoleCredential"
+  ],
+  "issuer": "did:sov:SeQNS5zqxdhL6hHDCeA3ge",
+  "issuanceDate": "2026-11-18T10:23:35Z",
+  "credentialSchema": {
+    "id": "https://chain-of-trust-lab.github.io/contexts/role/v1.schema.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "id": "did:sov:C1wnJ6gyFZdmN4smVAyCoV",
+    "type": "Stage",
+    "role": "Tester",
+    "scope": "https://github.com/chain-of-trust-lab/rest-api"
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "verificationMethod": "did:sov:SeQNS5zqxdhL6hHDCeA3ge#key-1",
+    "created": "2026-11-18T10:23:35+00:00",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..7z-6W28-lVU3wLcjjYvYzYwOrClH8tKIefASziLXxuJv0EF1CdsvWZg-d0GC4YzKwTYLZtB03jXxo_dtLykRCw"
+  }
+}
