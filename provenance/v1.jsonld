@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "ProvenanceCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ProvenanceCredential",
+    "SourceCommittedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#SourceCommittedCredential",
+    "SourceTestedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#SourceTestedCredential",
+    "PackageBuiltCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackageBuiltCredential",
+    "PackageTestedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackageTestedCredential",
+    "PackagePublishedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackagePublishedCredential",
+    "ImageBuiltCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ImageBuiltCredential",
+    "ImageTestedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ImageTestedCredential",
+    "ImagePublishedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ImagePublishedCredential",
+    "ImageApprovedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ImageApprovedCredential",
+    "ImageDeployedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ImageDeployedCredential",
+    "SourceRevision": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#SourceRevision",
+    "Package": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Package",
+    "DeployableImage": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#DeployableImage",
+    "name": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#name",
+    "digest": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#digest",
+    "location": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#location",
+    "step": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#step",
+    "inputs": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#inputs",
+      "@container": "@set"
+    },
+    "previousCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#previousCredential",
+    "credentialDigest": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#credentialDigest",
+    "pipelineRun": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#pipelineRun",
+    "repository": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#repository",
+      "@type": "@id"
+    },
+    "workflow": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#workflow",
+    "workflowDigest": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#workflowDigest",
+    "runId": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#runId",
+    "runAttempt": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#runAttempt",
+    "sbomDigest": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#sbomDigest",
+    "reportDigest": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#reportDigest",
+    "result": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#result",
+      "@type": "@vocab",
+      "@context": {
+        "@protected": true,
+        "Passed": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Passed",
+        "Failed": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Failed"
+      }
+    },
+    "registry": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#registry",
+      "@type": "@id"
+    },
+    "decision": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#decision",
+      "@type": "@vocab",
+      "@context": {
+        "@protected": true,
+        "Approved": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Approved",
+        "Rejected": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Rejected"
+      }
+    },
+    "environment": {
+      "@id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#environment",
+      "@type": "@vocab",
+      "@context": {
+        "@protected": true,
+        "Staging": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Staging",
+        "Production": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#Production"
+      }
+    }
+  }
+}

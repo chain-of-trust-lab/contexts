@@ -50,6 +50,12 @@ a[href]:active { color: var(--a-active-text); text-decoration-color: var(--a-act
 
 section.term { border-bottom: 1px solid var(--term-border); padding-bottom: .5em; }
 
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; margin: 1em 0; }
+th, td { border-bottom: 1px solid var(--term-border); padding: .3em .6em; text-align: left; vertical-align: top; }
+th { color: var(--heading-text); }
+td code { white-space: nowrap; }
+
 @media (max-width: 30em) {
   body { padding: 1em 16px 0; }
   h1 { font-size: 170%; }

@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
+  ],
+  "id": "urn:uuid:89b5966c-c73a-5b44-8993-64f8000657c2",
+  "type": [
+    "VerifiableCredential",
+    "ProvenanceCredential",
+    "ImageTestedCredential"
+  ],
+  "issuer": "did:sov:GGzcEJa6e9CpDnEgAvFaat",
+  "issuanceDate": "2026-11-18T12:00:00Z",
+  "credentialSchema": {
+    "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "id": "urn:sha256:6105d6cc76af400325e94d588ce511be5bfdbb73b437dc51eca43917d7a43e3d",
+    "type": "DeployableImage",
+    "name": "ghcr.io/chain-of-trust-lab/rest-api:0.1.0",
+    "digest": "sha256:6105d6cc76af400325e94d588ce511be5bfdbb73b437dc51eca43917d7a43e3d",
+    "step": "test-image",
+    "result": "Passed",
+    "reportDigest": "sha256:443a201f7d355cf42f9ec4fd0441334cad9879a4d916d64f36e053a3e3e83b0e",
+    "previousCredential": {
+      "id": "urn:uuid:4c096a22-cff3-5914-ac30-a0334d5114ad",
+      "credentialDigest": "sha256:a6188ab1e3d2efcd544a44e6c9e8362562b61b07b95a4f4154383f06fd6214fb"
+    },
+    "pipelineRun": {
+      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/1234567890/attempts/1",
+      "repository": "https://github.com/chain-of-trust-lab/rest-api",
+      "workflow": ".github/workflows/chain.yml",
+      "workflowDigest": "sha256:dfb9bee1605664e38938a105bf011417a28b4d1df5b8ffadea22c34cfa547340",
+      "runId": "1234567890",
+      "runAttempt": "1"
+    }
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "verificationMethod": "did:sov:GGzcEJa6e9CpDnEgAvFaat#key-1",
+    "created": "2026-11-18T12:00:00+00:00",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..2Kz380FSvQ1uXnOm-VMMHdSAGc9AD--MmD0KKJM5Wnz0CXplXecubpVAOHe-fa2x5eBuwr4evJU4a2VpqgltDA"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
+  ],
+  "id": "urn:uuid:4c096a22-cff3-5914-ac30-a0334d5114ad",
+  "type": [
+    "VerifiableCredential",
+    "ProvenanceCredential",
+    "ImageBuiltCredential"
+  ],
+  "issuer": "did:sov:Hfqjb1swL1CPbm1h33ssrv",
+  "issuanceDate": "2026-11-18T12:00:00Z",
+  "credentialSchema": {
+    "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "id": "urn:sha256:6105d6cc76af400325e94d588ce511be5bfdbb73b437dc51eca43917d7a43e3d",
+    "type": "DeployableImage",
+    "name": "ghcr.io/chain-of-trust-lab/rest-api:0.1.0",
+    "digest": "sha256:6105d6cc76af400325e94d588ce511be5bfdbb73b437dc51eca43917d7a43e3d",
+    "step": "build-image",
+    "inputs": [
+      {
+        "id": "urn:sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd",
+        "type": "Package",
+        "name": "pkg:maven/lab.chainoftrust/rest-api@0.1.0",
+        "digest": "sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd"
+      }
+    ],
+    "previousCredential": {
+      "id": "urn:uuid:449873de-2002-5015-bfd3-fa0b39b1cf8e",
+      "credentialDigest": "sha256:57f52d4c25d8e0a3f8253ec1ea524fbfc4642622f9c3249e9817fd7434a1f642"
+    },
+    "pipelineRun": {
+      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/1234567890/attempts/1",
+      "repository": "https://github.com/chain-of-trust-lab/rest-api",
+      "workflow": ".github/workflows/chain.yml",
+      "workflowDigest": "sha256:dfb9bee1605664e38938a105bf011417a28b4d1df5b8ffadea22c34cfa547340",
+      "runId": "1234567890",
+      "runAttempt": "1"
+    }
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "verificationMethod": "did:sov:Hfqjb1swL1CPbm1h33ssrv#key-1",
+    "created": "2026-11-18T12:00:00+00:00",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..PKCMKk2j1IIUNz4hTR8QpRYLKdIJ5XL3yuDAhlsqN9zBspQk1Z5rVvV2yO1h0DY3cs1uOP92tEY3zJy0nCDRBQ"
+  }
+}

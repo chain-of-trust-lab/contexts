@@ -25,5 +25,40 @@
         checks a credential, including that the actor type fits the role.</dd>
     </dl>
   </section>
+  <section class="term">
+    <h2 id="provenance-v1">ProvenanceCredential v1</h2>
+    <p>Records one pipeline step done to one artifact (a commit, a package or an image), linked to the run's
+      previous credential.</p>
+    <dl>
+      <dt>Context</dt>
+      <dd><a href="provenance/v1.jsonld"><code>https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld</code></a></dd>
+      <dt>Vocabulary</dt>
+      <dd><a href="provenance/v1">Provenance vocabulary v1</a>: the ten step types, their issuer roles, artifact
+        types and fields.</dd>
+      <dt>JSON Schema</dt>
+      <dd><a href="provenance/v1.schema.json"><code>https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json</code></a>
+        checks a credential, including the fields that belong to its step type.</dd>
+      <dt>Examples</dt>
+      <dd><a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples">One run of ten
+        signed credentials</a>, plus invalid ones the schema rejects. They are signed with example keys, not the
+        pipeline's.</dd>
+    </dl>
+  </section>
+  <h2 id="role-and-provenance">Role and provenance</h2>
+  <p>The deploy gate trusts a provenance credential only if its issuer holds the role credential for that step.</p>
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr><th></th><th>Role credential</th><th>Provenance credential</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Says</td><td>who may act</td><td>what was done to an artifact</td></tr>
+      <tr><td>Subject</td><td>an actor (person, stage or service)</td><td>an artifact, by digest</td></tr>
+      <tr><td>Issuer</td><td>the organization</td><td>the actor that did the step</td></tr>
+      <tr><td>Example</td><td>the build agent is a Builder for <code>rest-api</code></td>
+        <td>package <code>sha256:…</code> was built from commit <code>9505cac…</code></td></tr>
+    </tbody>
+  </table>
+  </div>
 </body>
 </html>

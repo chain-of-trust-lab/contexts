@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
+  ],
+  "id": "urn:uuid:449873de-2002-5015-bfd3-fa0b39b1cf8e",
+  "type": [
+    "VerifiableCredential",
+    "ProvenanceCredential",
+    "PackagePublishedCredential"
+  ],
+  "issuer": "did:sov:LTcvaN1QWqTEJkeXbZS1KW",
+  "issuanceDate": "2026-11-18T12:00:00Z",
+  "credentialSchema": {
+    "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "id": "urn:sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd",
+    "type": "Package",
+    "name": "pkg:maven/lab.chainoftrust/rest-api@0.1.0",
+    "digest": "sha256:0163f1eea7894350060624d315234d40c508ab251ba121714e234503045faadd",
+    "step": "deliver-package",
+    "location": "https://maven.pkg.github.com/chain-of-trust-lab/rest-api",
+    "registry": "https://maven.pkg.github.com",
+    "previousCredential": {
+      "id": "urn:uuid:fc12cd5a-6a05-5354-b11d-bcb76ca851c3",
+      "credentialDigest": "sha256:4d1e9f1caaa57d075b72800a36fb4e8fa1cbcd259f63c296674c001e6bfd3188"
+    },
+    "pipelineRun": {
+      "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/1234567890/attempts/1",
+      "repository": "https://github.com/chain-of-trust-lab/rest-api",
+      "workflow": ".github/workflows/chain.yml",
+      "workflowDigest": "sha256:dfb9bee1605664e38938a105bf011417a28b4d1df5b8ffadea22c34cfa547340",
+      "runId": "1234567890",
+      "runAttempt": "1"
+    }
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "verificationMethod": "did:sov:LTcvaN1QWqTEJkeXbZS1KW#key-1",
+    "created": "2026-11-18T12:00:00+00:00",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..rrYp7_K0_YsIkyBWMHvkO-Re8u5dGYzNmgpTd3MPk6kaisYQuE4BMco6g-lUhN1zAWDWGHK_HCA_4OM4DLxVCA"
+  }
+}

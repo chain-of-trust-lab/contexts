@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css">
+  <title>Provenance vocabulary v1</title>
+  <script type="application/ld+json">
+  {
+    "@context": {
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "cred": "https://www.w3.org/2018/credentials#",
+      "v": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#"
+    },
+    "@graph": [
+      {
+        "@id": "v:ProvenanceCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "cred:VerifiableCredential" },
+        "rdfs:label": "Provenance credential",
+        "rdfs:comment": "Records one pipeline step done to one artifact, linked to the run's previous credential. Every provenance credential also has one of the ten step types."
+      },
+      {
+        "@id": "v:SourceCommittedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Source committed credential",
+        "rdfs:comment": "An Authorized Maintainer committed the source revision. The first credential of a run."
+      },
+      {
+        "@id": "v:SourceTestedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Source tested credential",
+        "rdfs:comment": "The Tester ran the unit tests on the source revision."
+      },
+      {
+        "@id": "v:PackageBuiltCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Package built credential",
+        "rdfs:comment": "The Builder built the package from the source revision named in inputs."
+      },
+      {
+        "@id": "v:PackageTestedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Package tested credential",
+        "rdfs:comment": "The Tester tested the package."
+      },
+      {
+        "@id": "v:PackagePublishedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Package published credential",
+        "rdfs:comment": "The Publisher published the package to a registry."
+      },
+      {
+        "@id": "v:ImageBuiltCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Image built credential",
+        "rdfs:comment": "The Builder built the deployable image from the package named in inputs."
+      },
+      {
+        "@id": "v:ImageTestedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Image tested credential",
+        "rdfs:comment": "The Tester tested the deployable image."
+      },
+      {
+        "@id": "v:ImagePublishedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Image published credential",
+        "rdfs:comment": "The Publisher published the deployable image to a registry."
+      },
+      {
+        "@id": "v:ImageApprovedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Image approved credential",
+        "rdfs:comment": "A Release Approver decided whether the deployable image may be deployed to an environment."
+      },
+      {
+        "@id": "v:ImageDeployedCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
+        "rdfs:label": "Image deployed credential",
+        "rdfs:comment": "The Deploy Gate verified the chain and deployed the deployable image. The last credential of a run."
+      },
+      {
+        "@id": "v:SourceRevision",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Source revision",
+        "rdfs:comment": "A git commit, identified as urn:git:sha1:<commit> and named by its repository URL."
+      },
+      {
+        "@id": "v:Package",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Package",
+        "rdfs:comment": "A built package, identified as urn:sha256:<digest> and named by its Maven purl."
+      },
+      {
+        "@id": "v:DeployableImage",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Deployable image",
+        "rdfs:comment": "A container image, identified as urn:sha256:<digest> and named by its image reference."
+      },
+      {
+        "@id": "v:name",
+        "@type": "rdf:Property",
+        "rdfs:label": "name",
+        "rdfs:comment": "The artifact's name: a repository URL, a Maven purl or an image reference."
+      },
+      {
+        "@id": "v:digest",
+        "@type": "rdf:Property",
+        "rdfs:label": "digest",
+        "rdfs:comment": "The artifact's digest: sha1:<hex> for a commit, sha256:<hex> otherwise. It matches the artifact's id."
+      },
+      {
+        "@id": "v:location",
+        "@type": "rdf:Property",
+        "rdfs:label": "location",
+        "rdfs:comment": "Where a publish step put the artifact."
+      },
+      {
+        "@id": "v:step",
+        "@type": "rdf:Property",
+        "rdfs:label": "step",
+        "rdfs:comment": "The name of the pipeline step, for example build-package."
+      },
+      {
+        "@id": "v:inputs",
+        "@type": "rdf:Property",
+        "rdfs:label": "inputs",
+        "rdfs:comment": "The artifacts the subject was built from: the commit of a package, the package of an image."
+      },
+      {
+        "@id": "v:previousCredential",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "cred:VerifiableCredential" },
+        "rdfs:label": "previous credential",
+        "rdfs:comment": "The run's previous provenance credential, by id and credentialDigest."
+      },
+      {
+        "@id": "v:credentialDigest",
+        "@type": "rdf:Property",
+        "rdfs:label": "credential digest",
+        "rdfs:comment": "sha256 of the RFC 8785 (JCS) canonical JSON of the previous signed credential, proof included."
+      },
+      {
+        "@id": "v:pipelineRun",
+        "@type": "rdf:Property",
+        "rdfs:label": "pipeline run",
+        "rdfs:comment": "The GitHub Actions run attempt that did the step, identified by its URL."
+      },
+      {
+        "@id": "v:repository",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "rdfs:Resource" },
+        "rdfs:label": "repository",
+        "rdfs:comment": "The repository the run belongs to, as its GitHub URL."
+      },
+      {
+        "@id": "v:workflow",
+        "@type": "rdf:Property",
+        "rdfs:label": "workflow",
+        "rdfs:comment": "The path of the workflow file in the repository."
+      },
+      {
+        "@id": "v:workflowDigest",
+        "@type": "rdf:Property",
+        "rdfs:label": "workflow digest",
+        "rdfs:comment": "sha256 of the workflow file the run used."
+      },
+      {
+        "@id": "v:runId",
+        "@type": "rdf:Property",
+        "rdfs:label": "run ID",
+        "rdfs:comment": "The GitHub Actions run ID."
+      },
+      {
+        "@id": "v:runAttempt",
+        "@type": "rdf:Property",
+        "rdfs:label": "run attempt",
+        "rdfs:comment": "The attempt number of the run, starting at 1."
+      },
+      {
+        "@id": "v:sbomDigest",
+        "@type": "rdf:Property",
+        "rdfs:label": "SBOM digest",
+        "rdfs:comment": "sha256 of the software bill of materials produced with the package."
+      },
+      {
+        "@id": "v:result",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "v:Result" },
+        "rdfs:label": "result",
+        "rdfs:comment": "The outcome of a test step."
+      },
+      {
+        "@id": "v:reportDigest",
+        "@type": "rdf:Property",
+        "rdfs:label": "report digest",
+        "rdfs:comment": "sha256 of the test report."
+      },
+      {
+        "@id": "v:registry",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "rdfs:Resource" },
+        "rdfs:label": "registry",
+        "rdfs:comment": "The registry a publish step published to, as its URL."
+      },
+      {
+        "@id": "v:decision",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "v:Decision" },
+        "rdfs:label": "decision",
+        "rdfs:comment": "The Release Approver's decision."
+      },
+      {
+        "@id": "v:environment",
+        "@type": "rdf:Property",
+        "rdfs:range": { "@id": "v:Environment" },
+        "rdfs:label": "environment",
+        "rdfs:comment": "The environment an image is approved for or deployed to."
+      },
+      { "@id": "v:Result", "@type": "rdfs:Class", "rdfs:label": "Result", "rdfs:comment": "The values of result." },
+      { "@id": "v:Passed", "@type": "v:Result", "rdfs:label": "Passed", "rdfs:comment": "The tests passed." },
+      { "@id": "v:Failed", "@type": "v:Result", "rdfs:label": "Failed", "rdfs:comment": "The tests failed." },
+      { "@id": "v:Decision", "@type": "rdfs:Class", "rdfs:label": "Decision", "rdfs:comment": "The values of decision." },
+      { "@id": "v:Approved", "@type": "v:Decision", "rdfs:label": "Approved", "rdfs:comment": "The image may be deployed." },
+      { "@id": "v:Rejected", "@type": "v:Decision", "rdfs:label": "Rejected", "rdfs:comment": "The image must not be deployed." },
+      { "@id": "v:Environment", "@type": "rdfs:Class", "rdfs:label": "Environment", "rdfs:comment": "The values of environment." },
+      { "@id": "v:Staging", "@type": "v:Environment", "rdfs:label": "Staging", "rdfs:comment": "The staging environment." },
+      { "@id": "v:Production", "@type": "v:Environment", "rdfs:label": "Production", "rdfs:comment": "The production environment." }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Provenance vocabulary v1</h1>
+  <p>Terms of the <a href="v1.jsonld">ProvenanceCredential v1 context</a>. Credentials are checked with the
+    <a href="v1.schema.json">ProvenanceCredential v1 JSON Schema</a>; there are
+    <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples">signed examples</a> of each
+    type. This page never changes; a change gets a new version.</p>
+  <p>A <a href="../role/v1">role credential</a> says who may act. A provenance credential says what was done to an
+    artifact: its subject is the artifact, its issuer the agent of the actor that did the step.</p>
+
+  <section class="term">
+    <h2 id="ProvenanceCredential">ProvenanceCredential</h2>
+    <p>Class. Records one pipeline step done to one artifact. Its <code>type</code> lists
+      <code>VerifiableCredential</code>, <code>ProvenanceCredential</code> and exactly one of the step types below.
+      It is signed with <code>Ed25519Signature2018</code> by the issuer's <code>did:sov</code> DID and sent to the
+      project agent, which holds the run's chain.</p>
+    <p>The subject's fields <code>id</code>, <code>type</code>, <code>name</code>, <code>digest</code>,
+      <code>step</code> and <code>pipelineRun</code> are always present; the table gives the rest.</p>
+  </section>
+
+  <h2>Step types</h2>
+  <p>Each step type has one issuer role, one artifact type and its own fields. A run's credentials follow this
+    order, each linked to the one before by <code>previousCredential</code>.</p>
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr><th>Type</th><th>Step</th><th>Issuer role</th><th>Artifact</th><th>Other fields</th></tr>
+    </thead>
+    <tbody>
+      <tr><td id="SourceCommittedCredential"><code>SourceCommittedCredential</code></td><td><code>commit</code></td>
+        <td>Authorized Maintainer</td><td>SourceRevision</td><td>none; no <code>previousCredential</code></td></tr>
+      <tr><td id="SourceTestedCredential"><code>SourceTestedCredential</code></td><td><code>test-code</code></td>
+        <td>Tester</td><td>SourceRevision</td><td><code>result</code>, <code>reportDigest</code></td></tr>
+      <tr><td id="PackageBuiltCredential"><code>PackageBuiltCredential</code></td><td><code>build-package</code></td>
+        <td>Builder</td><td>Package</td><td><code>inputs</code> (the commit), <code>sbomDigest</code></td></tr>
+      <tr><td id="PackageTestedCredential"><code>PackageTestedCredential</code></td><td><code>test-package</code></td>
+        <td>Tester</td><td>Package</td><td><code>result</code>, <code>reportDigest</code></td></tr>
+      <tr><td id="PackagePublishedCredential"><code>PackagePublishedCredential</code></td>
+        <td><code>deliver-package</code></td><td>Publisher</td><td>Package</td>
+        <td><code>location</code>, <code>registry</code></td></tr>
+      <tr><td id="ImageBuiltCredential"><code>ImageBuiltCredential</code></td><td><code>build-image</code></td>
+        <td>Builder</td><td>DeployableImage</td><td><code>inputs</code> (the package)</td></tr>
+      <tr><td id="ImageTestedCredential"><code>ImageTestedCredential</code></td><td><code>test-image</code></td>
+        <td>Tester</td><td>DeployableImage</td><td><code>result</code>, <code>reportDigest</code></td></tr>
+      <tr><td id="ImagePublishedCredential"><code>ImagePublishedCredential</code></td><td><code>deliver-image</code></td>
+        <td>Publisher</td><td>DeployableImage</td><td><code>location</code>, <code>registry</code></td></tr>
+      <tr><td id="ImageApprovedCredential"><code>ImageApprovedCredential</code></td><td><code>approve</code></td>
+        <td>Release Approver</td><td>DeployableImage</td><td><code>decision</code>, <code>environment</code></td></tr>
+      <tr><td id="ImageDeployedCredential"><code>ImageDeployedCredential</code></td><td><code>deploy</code></td>
+        <td>Deploy Gate</td><td>DeployableImage</td><td><code>environment</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Artifact types</h2>
+  <p>The value of <code>credentialSubject.type</code> and of each <code>inputs</code> item's <code>type</code>.</p>
+  <dl>
+    <dt id="SourceRevision"><code>SourceRevision</code></dt>
+    <dd>A git commit. <code>id</code> is <code>urn:git:sha1:&lt;commit&gt;</code>, <code>digest</code>
+      <code>sha1:&lt;commit&gt;</code>, <code>name</code> the repository URL.</dd>
+    <dt id="Package"><code>Package</code></dt>
+    <dd>A built package. <code>id</code> is <code>urn:sha256:&lt;digest&gt;</code>, <code>digest</code>
+      <code>sha256:&lt;digest&gt;</code>, <code>name</code> its Maven purl.</dd>
+    <dt id="DeployableImage"><code>DeployableImage</code></dt>
+    <dd>A container image. <code>id</code> is <code>urn:sha256:&lt;digest&gt;</code>, <code>digest</code>
+      <code>sha256:&lt;digest&gt;</code>, <code>name</code> its image reference.</dd>
+  </dl>
+
+  <h2>Artifact properties</h2>
+  <dl>
+    <dt id="name"><code>name</code></dt>
+    <dd>The artifact's name: a repository URL, a Maven purl or an image reference.</dd>
+    <dt id="digest"><code>digest</code></dt>
+    <dd>The artifact's digest: <code>sha1:&lt;hex&gt;</code> for a commit, <code>sha256:&lt;hex&gt;</code>
+      otherwise. It must match the artifact's <code>id</code>.</dd>
+    <dt id="location"><code>location</code></dt>
+    <dd>Where a publish step put the artifact.</dd>
+    <dt id="inputs"><code>inputs</code></dt>
+    <dd>The artifacts the subject was built from, each with <code>id</code>, <code>type</code>, <code>name</code>
+      and <code>digest</code>: the commit of a package, the package of an image.</dd>
+  </dl>
+
+  <h2>Run properties</h2>
+  <dl>
+    <dt id="step"><code>step</code></dt>
+    <dd>The name of the pipeline step, as in the table above.</dd>
+    <dt id="previousCredential"><code>previousCredential</code></dt>
+    <dd>The run's previous provenance credential: its <code>id</code> and <code>credentialDigest</code>. Absent only
+      on <code>SourceCommittedCredential</code>.</dd>
+    <dt id="credentialDigest"><code>credentialDigest</code></dt>
+    <dd><code>sha256:</code> followed by the sha256 of the <a href="https://www.rfc-editor.org/rfc/rfc8785">RFC 8785</a>
+      (JCS) canonical JSON of the previous signed credential, proof included.</dd>
+    <dt id="pipelineRun"><code>pipelineRun</code></dt>
+    <dd>The run attempt that did the step. <code>id</code> is the attempt's URL,
+      <code>https://github.com/&lt;owner&gt;/&lt;repo&gt;/actions/runs/&lt;runId&gt;/attempts/&lt;runAttempt&gt;</code>.</dd>
+    <dt id="repository"><code>repository</code></dt>
+    <dd>The repository of the run, as its GitHub URL. It matches the <code>scope</code> of the issuer's role
+      credential.</dd>
+    <dt id="workflow"><code>workflow</code></dt>
+    <dd>The path of the workflow file, for example <code>.github/workflows/chain.yml</code>.</dd>
+    <dt id="workflowDigest"><code>workflowDigest</code></dt>
+    <dd><code>sha256:&lt;hex&gt;</code> of the workflow file the run used.</dd>
+    <dt id="runId"><code>runId</code></dt>
+    <dd>The GitHub Actions run ID, as a string.</dd>
+    <dt id="runAttempt"><code>runAttempt</code></dt>
+    <dd>The attempt number, as a string, starting at <code>1</code>.</dd>
+  </dl>
+
+  <h2>Step properties</h2>
+  <dl>
+    <dt id="sbomDigest"><code>sbomDigest</code></dt>
+    <dd><code>sha256:&lt;hex&gt;</code> of the software bill of materials produced with the package.</dd>
+    <dt id="result"><code>result</code></dt>
+    <dd>The outcome of a test step: <code id="Passed">Passed</code> or <code id="Failed">Failed</code>.</dd>
+    <dt id="reportDigest"><code>reportDigest</code></dt>
+    <dd><code>sha256:&lt;hex&gt;</code> of the test report.</dd>
+    <dt id="registry"><code>registry</code></dt>
+    <dd>The registry a publish step published to, as its URL, for example <code>https://ghcr.io</code>.</dd>
+    <dt id="decision"><code>decision</code></dt>
+    <dd>The Release Approver's decision: <code id="Approved">Approved</code> or <code id="Rejected">Rejected</code>.</dd>
+    <dt id="environment"><code>environment</code></dt>
+    <dd>The environment an image is approved for or deployed to: <code id="Staging">Staging</code> or
+      <code id="Production">Production</code>.</dd>
+  </dl>
+
+  <h2 id="checks">What the verifier checks</h2>
+  <p>The JSON Schema checks each credential's shape: the step, artifact type and fields that belong to its type.
+    It cannot check:</p>
+  <ul>
+    <li>who issued the credential: the verifier checks that the issuer holds a role credential with the step's issuer
+      role and a <code>scope</code> equal to <code>pipelineRun.repository</code></li>
+    <li>that <code>id</code> and <code>digest</code> name the same artifact, and that <code>inputs</code> and
+      <code>previousCredential</code> point to credentials of the same run</li>
+    <li>the signature, the <code>credentialDigest</code> links, or the order of the steps</li>
+  </ul>
+  <p>ACA-Py does not check the JSON Schema either; the verifier must.</p>
+</body>
+</html>
