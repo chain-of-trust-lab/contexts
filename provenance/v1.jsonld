@@ -4,7 +4,6 @@
     "@protected": true,
     "ProvenanceCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#ProvenanceCredential",
     "SourceCommittedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#SourceCommittedCredential",
-    "SourceTestedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#SourceTestedCredential",
     "PackageBuiltCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackageBuiltCredential",
     "PackageTestedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackageTestedCredential",
     "PackagePublishedCredential": "https://chain-of-trust-lab.github.io/contexts/provenance/v1#PackagePublishedCredential",

@@ -19,7 +19,7 @@
         "@type": "rdfs:Class",
         "rdfs:subClassOf": { "@id": "cred:VerifiableCredential" },
         "rdfs:label": "Provenance credential",
-        "rdfs:comment": "Records one pipeline step done to one artifact, linked to the run's previous credential. Every provenance credential also has one of the ten step types."
+        "rdfs:comment": "Records one pipeline step done to one artifact, linked to the run's previous credential. Every provenance credential also has one of the nine step types."
       },
       {
         "@id": "v:SourceCommittedCredential",
@@ -29,18 +29,11 @@
         "rdfs:comment": "An Authorized Maintainer committed the source revision. The first credential of a run."
       },
       {
-        "@id": "v:SourceTestedCredential",
-        "@type": "rdfs:Class",
-        "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
-        "rdfs:label": "Source tested credential",
-        "rdfs:comment": "The Tester ran the unit tests on the source revision."
-      },
-      {
         "@id": "v:PackageBuiltCredential",
         "@type": "rdfs:Class",
         "rdfs:subClassOf": { "@id": "v:ProvenanceCredential" },
         "rdfs:label": "Package built credential",
-        "rdfs:comment": "The Builder built the package from the source revision named in inputs."
+        "rdfs:comment": "The Builder compiled the source revision named in inputs, ran its unit tests and packaged it."
       },
       {
         "@id": "v:PackageTestedCredential",
@@ -206,7 +199,7 @@
         "@id": "v:reportDigest",
         "@type": "rdf:Property",
         "rdfs:label": "report digest",
-        "rdfs:comment": "sha256 of the test report."
+        "rdfs:comment": "sha256 of the test report: the unit tests for a package build, the test step's own report otherwise."
       },
       {
         "@id": "v:registry",
@@ -247,7 +240,7 @@
   <p>Terms of the <a href="v1.jsonld">ProvenanceCredential v1 context</a>. Credentials are checked with the
     <a href="v1.schema.json">ProvenanceCredential v1 JSON Schema</a>; there are
     <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples">signed examples</a> of each
-    type. This page never changes; a change gets a new version.</p>
+    type.</p>
   <p>A <a href="../role/v1">role credential</a> says who may act. A provenance credential says what was done to an
     artifact: its subject is the artifact, its issuer the agent of the actor that did the step.</p>
 
@@ -272,10 +265,9 @@
     <tbody>
       <tr><td id="SourceCommittedCredential"><code>SourceCommittedCredential</code></td><td><code>commit</code></td>
         <td>Authorized Maintainer</td><td>SourceRevision</td><td>none; no <code>previousCredential</code></td></tr>
-      <tr><td id="SourceTestedCredential"><code>SourceTestedCredential</code></td><td><code>test-code</code></td>
-        <td>Tester</td><td>SourceRevision</td><td><code>result</code>, <code>reportDigest</code></td></tr>
       <tr><td id="PackageBuiltCredential"><code>PackageBuiltCredential</code></td><td><code>build-package</code></td>
-        <td>Builder</td><td>Package</td><td><code>inputs</code> (the commit), <code>sbomDigest</code></td></tr>
+        <td>Builder</td><td>Package</td><td><code>inputs</code> (the commit), <code>sbomDigest</code>,
+        <code>reportDigest</code> (unit tests)</td></tr>
       <tr><td id="PackageTestedCredential"><code>PackageTestedCredential</code></td><td><code>test-package</code></td>
         <td>Tester</td><td>Package</td><td><code>result</code>, <code>reportDigest</code></td></tr>
       <tr><td id="PackagePublishedCredential"><code>PackagePublishedCredential</code></td>
@@ -356,7 +348,9 @@
     <dt id="result"><code>result</code></dt>
     <dd>The outcome of a test step: <code id="Passed">Passed</code> or <code id="Failed">Failed</code>.</dd>
     <dt id="reportDigest"><code>reportDigest</code></dt>
-    <dd><code>sha256:&lt;hex&gt;</code> of the test report.</dd>
+    <dd><code>sha256:&lt;hex&gt;</code> of the test report: the unit-test report for
+      <code>PackageBuiltCredential</code>, whose step compiles, runs the unit tests and packages; the step's own report
+      for the tested credentials.</dd>
     <dt id="registry"><code>registry</code></dt>
     <dd>The registry a publish step published to, as its URL, for example <code>https://ghcr.io</code>.</dd>
     <dt id="decision"><code>decision</code></dt>

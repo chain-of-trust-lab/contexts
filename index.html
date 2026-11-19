@@ -10,7 +10,6 @@
   <h1>Chain of Trust contexts</h1>
   <p>JSON-LD contexts for the verifiable credentials of the master thesis "Enhancing Software Supply Chain Security
     Through Verifiable Identity Chains and Impersonation Prevention" (TU Berlin).</p>
-  <p>Published contexts never change. A change gets a new version.</p>
   <section class="term">
     <h2 id="role-v1">RoleCredential v1</h2>
     <p>Grants an actor (person, stage or service) one role in the pipeline of one repository.</p>
@@ -35,13 +34,13 @@
       <dt>Context</dt>
       <dd><a href="provenance/v1.jsonld"><code>https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld</code></a></dd>
       <dt>Vocabulary</dt>
-      <dd><a href="provenance/v1">Provenance vocabulary v1</a>: the ten step types, their issuer roles, artifact
+      <dd><a href="provenance/v1">Provenance vocabulary v1</a>: the nine step types, their issuer roles, artifact
         types and fields.</dd>
       <dt>JSON Schema</dt>
       <dd><a href="provenance/v1.schema.json"><code>https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json</code></a>
         checks a credential, including the fields that belong to its step type.</dd>
       <dt>Examples</dt>
-      <dd>The ten credentials of one pipeline run in the <a href="#examples">end-to-end example</a>, and
+      <dd>The nine credentials of one pipeline run in the <a href="#examples">end-to-end example</a>, and
         <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/provenance/examples/invalid">invalid ones</a>
         the schema rejects.</dd>
     </dl>
@@ -66,7 +65,7 @@
   <p><a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples">One consistent scenario</a> for
     <code>chain-of-trust-lab/rest-api</code>: the organization gives seven agents their
     <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples/role">role credentials</a>, then one
-    pipeline run issues the ten
+    pipeline run issues the nine
     <a href="https://github.com/chain-of-trust-lab/contexts/tree/main/examples/provenance">provenance credentials</a>
     of one commit, each by the agent that holds the step's role. The data is made up but fits together, and every
     credential is signed, with example keys that are not on any ledger.</p>

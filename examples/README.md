@@ -4,7 +4,8 @@ One consistent scenario with every credential of the chain of trust, for the rep
 [chain-of-trust-lab/rest-api](https://github.com/chain-of-trust-lab/rest-api):
 
 1. The organization gives each of the seven agents its role ([`role/`](role)), as `04.bootstrap` does.
-2. One run of the Delivery Pipeline builds, tests, publishes, approves and deploys one commit
+2. One run of the Delivery Pipeline builds (compiling and running the unit tests), tests, publishes, approves and
+   deploys one commit
    ([`provenance/`](provenance)). Each step's credential is issued by the agent that holds the step's role and is sent
    to the project agent, which holds the chain.
 
@@ -19,11 +20,11 @@ Issuer of every role credential: the organization, `did:sov:SeQNS5zqxdhL6hHDCeA3
 | Credential | Agent | DID | Actor type | Role | Issues |
 | --- | --- | --- | --- | --- | --- |
 | [01](role/01-maintainer.json) | maintainer | `did:sov:6StKqB4QruRydr4JA8WQMT` | Person | AuthorizedMaintainer | 01 |
-| [02](role/02-approver.json) | approver | `did:sov:LyT4sf2XNxvcquAKA2M2Db` | Person | ReleaseApprover | 09 |
-| [03](role/03-build.json) | build | `did:sov:29XjXQCyrW8KiqqWg4dAkV` | Stage | Builder | 03, 06 |
-| [04](role/04-test.json) | test | `did:sov:C1wnJ6gyFZdmN4smVAyCoV` | Stage | Tester | 02, 04, 07 |
-| [05](role/05-deliver.json) | deliver | `did:sov:3pH8iriDney9f4b2WBAFY9` | Stage | Publisher | 05, 08 |
-| [06](role/06-deploy.json) | deploy | `did:sov:G2rS1cQPkeVHFcYh4x9APD` | Service | DeployGate | 10 |
+| [02](role/02-approver.json) | approver | `did:sov:LyT4sf2XNxvcquAKA2M2Db` | Person | ReleaseApprover | 08 |
+| [03](role/03-build.json) | build | `did:sov:29XjXQCyrW8KiqqWg4dAkV` | Stage | Builder | 02, 05 |
+| [04](role/04-test.json) | test | `did:sov:C1wnJ6gyFZdmN4smVAyCoV` | Stage | Tester | 03, 06 |
+| [05](role/05-deliver.json) | deliver | `did:sov:3pH8iriDney9f4b2WBAFY9` | Stage | Publisher | 04, 07 |
+| [06](role/06-deploy.json) | deploy | `did:sov:G2rS1cQPkeVHFcYh4x9APD` | Service | DeployGate | 09 |
 | [07](role/07-project.json) | project | `did:sov:BCtYL1m4BLVLmdMRUnuJyK` | Service | ReleaseCustodian | none; holds the chain |
 
 ## The pipeline run
@@ -34,15 +35,14 @@ Run [19482736105](https://github.com/chain-of-trust-lab/rest-api/actions/runs/19
 | # | Credential | Time (UTC) | Issuer | Subject | Step fields |
 | --- | --- | --- | --- | --- | --- |
 | [01](provenance/01-commit.json) | SourceCommittedCredential | 09:14:22 | maintainer | commit | none |
-| [02](provenance/02-test-code.json) | SourceTestedCredential | 09:16:48 | test | commit | result Passed, report |
-| [03](provenance/03-build-package.json) | PackageBuiltCredential | 09:18:31 | build | package | inputs: the commit, SBOM |
-| [04](provenance/04-test-package.json) | PackageTestedCredential | 09:20:05 | test | package | result Passed, report |
-| [05](provenance/05-deliver-package.json) | PackagePublishedCredential | 09:21:40 | deliver | package | GitHub Packages |
-| [06](provenance/06-build-image.json) | ImageBuiltCredential | 09:24:12 | build | image | inputs: the package |
-| [07](provenance/07-test-image.json) | ImageTestedCredential | 09:26:57 | test | image | result Passed, report |
-| [08](provenance/08-deliver-image.json) | ImagePublishedCredential | 09:28:19 | deliver | image | ghcr.io |
-| [09](provenance/09-approve.json) | ImageApprovedCredential | 10:02:44 | approver | image | Approved for Production |
-| [10](provenance/10-deploy.json) | ImageDeployedCredential | 10:05:10 | deploy | image | Production |
+| [02](provenance/02-build-package.json) | PackageBuiltCredential | 09:18:31 | build | package | inputs: the commit, SBOM, unit-test report |
+| [03](provenance/03-test-package.json) | PackageTestedCredential | 09:20:05 | test | package | result Passed, report |
+| [04](provenance/04-deliver-package.json) | PackagePublishedCredential | 09:21:40 | deliver | package | GitHub Packages |
+| [05](provenance/05-build-image.json) | ImageBuiltCredential | 09:24:12 | build | image | inputs: the package |
+| [06](provenance/06-test-image.json) | ImageTestedCredential | 09:26:57 | test | image | result Passed, report |
+| [07](provenance/07-deliver-image.json) | ImagePublishedCredential | 09:28:19 | deliver | image | ghcr.io |
+| [08](provenance/08-approve.json) | ImageApprovedCredential | 10:02:44 | approver | image | Approved for Production |
+| [09](provenance/09-deploy.json) | ImageDeployedCredential | 10:05:10 | deploy | image | Production |
 
 The artifacts:
 

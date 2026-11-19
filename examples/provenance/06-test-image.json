@@ -3,14 +3,14 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
   ],
-  "id": "urn:uuid:c17a943c-9cd8-528c-b01d-5915ab4f6e5c",
+  "id": "urn:uuid:ff3d49df-2c55-5aac-8fea-d84a0f1cfa69",
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
-    "ImageDeployedCredential"
+    "ImageTestedCredential"
   ],
-  "issuer": "did:sov:G2rS1cQPkeVHFcYh4x9APD",
-  "issuanceDate": "2026-11-19T10:05:10Z",
+  "issuer": "did:sov:C1wnJ6gyFZdmN4smVAyCoV",
+  "issuanceDate": "2026-11-19T09:26:57Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
@@ -20,11 +20,12 @@
     "type": "DeployableImage",
     "name": "ghcr.io/chain-of-trust-lab/rest-api:0.0.1-32f62178379e",
     "digest": "sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "step": "deploy",
-    "environment": "Production",
+    "step": "test-image",
+    "result": "Passed",
+    "reportDigest": "sha256:4c14959cca46ee30b2ab0e2616d48a5aedba8755b88dd99ba3804b52d3ec3b7a",
     "previousCredential": {
-      "id": "urn:uuid:3e3fa0aa-2a91-5dab-a3db-4ed86432560a",
-      "credentialDigest": "sha256:c60d275a6b84ab6b6a3aed615ce843fd62c7103bf54abdfa70eca980913a5398"
+      "id": "urn:uuid:e521c126-a712-5934-9d2a-32548746093a",
+      "credentialDigest": "sha256:9c665a08f1c6286cd3491b19813f97dec744c4ed5c0051941b2336debe3aeec7"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
@@ -37,9 +38,9 @@
   },
   "proof": {
     "type": "Ed25519Signature2018",
-    "verificationMethod": "did:sov:G2rS1cQPkeVHFcYh4x9APD#key-1",
-    "created": "2026-11-19T10:05:10+00:00",
+    "verificationMethod": "did:sov:C1wnJ6gyFZdmN4smVAyCoV#key-1",
+    "created": "2026-11-19T09:26:57+00:00",
     "proofPurpose": "assertionMethod",
-    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..4vwCQN3JZhIV8OSwCWSiR-n6FVX2aZK6s8qISAgEOP7i2lfiLhpU6gb_r1c-pwGuDQOu2ESiZJfDvnM8PWCTDw"
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..O4Dr9UmCeFyk6Oxywe6Va64Uf3QCAfCDyDbig-VDSVvcZFlNFwbJWrLT1VRqd8lkHu6peXrDWcQkm7imiWamBQ"
   }
 }

@@ -7,10 +7,10 @@
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
-    "ImageTestedCredential"
+    "ImagePublishedCredential"
   ],
-  "issuer": "did:sov:C1wnJ6gyFZdmN4smVAyCoV",
-  "issuanceDate": "2026-11-19T09:26:57Z",
+  "issuer": "did:sov:3pH8iriDney9f4b2WBAFY9",
+  "issuanceDate": "2026-11-19T09:28:19Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
@@ -20,12 +20,12 @@
     "type": "DeployableImage",
     "name": "ghcr.io/chain-of-trust-lab/rest-api:0.0.1-32f62178379e",
     "digest": "sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "step": "test-image",
-    "result": "Passed",
-    "reportDigest": "sha256:4c14959cca46ee30b2ab0e2616d48a5aedba8755b88dd99ba3804b52d3ec3b7a",
+    "step": "deliver-image",
+    "location": "ghcr.io/chain-of-trust-lab/rest-api@sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
+    "registry": "https://ghcr.io",
     "previousCredential": {
       "id": "urn:uuid:ff3d49df-2c55-5aac-8fea-d84a0f1cfa69",
-      "credentialDigest": "sha256:8ad5d3e501fdb1157d5c4f5e8c1ff748e9529415231d5b4a50a2bb356d9bf8c3"
+      "credentialDigest": "sha256:36f710c2befa92ac1ed2b189ac66580c48a581edf90fbe1f97a7bc293d0dfd78"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
@@ -38,9 +38,9 @@
   },
   "proof": {
     "type": "Ed25519Signature2018",
-    "verificationMethod": "did:sov:C1wnJ6gyFZdmN4smVAyCoV#key-1",
-    "created": "2026-11-19T09:26:57+00:00",
+    "verificationMethod": "did:sov:3pH8iriDney9f4b2WBAFY9#key-1",
+    "created": "2026-11-19T09:28:19+00:00",
     "proofPurpose": "assertionMethod",
-    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..BVGH8thc7_RiKEjqDHcZY8Qq8YZEiP2XYxCMKX2OsOMrCyYXyJiPimiJTN55fkizNMgpHvr1QLzlSZ9T-V9RCQ"
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..rFF3iz_afI9L53I78eAilc5NEAY6f5Ot-wB3eBXzRslRL4ETpFlUadiTr6C9wYAL0QoSLxyx98yDei9r6ZIJBQ"
   }
 }

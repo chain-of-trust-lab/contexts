@@ -3,29 +3,29 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
   ],
-  "id": "urn:uuid:1e814b14-079b-5065-a215-4413eef30242",
+  "id": "urn:uuid:fcebbc12-34e1-55d7-8ab5-8c40c462ebcd",
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
-    "ImagePublishedCredential"
+    "PackagePublishedCredential"
   ],
   "issuer": "did:sov:3pH8iriDney9f4b2WBAFY9",
-  "issuanceDate": "2026-11-19T09:28:19Z",
+  "issuanceDate": "2026-11-19T09:21:40Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
   },
   "credentialSubject": {
-    "id": "urn:sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "type": "DeployableImage",
-    "name": "ghcr.io/chain-of-trust-lab/rest-api:0.0.1-32f62178379e",
-    "digest": "sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "step": "deliver-image",
-    "location": "ghcr.io/chain-of-trust-lab/rest-api@sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "registry": "https://ghcr.io",
+    "id": "urn:sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
+    "type": "Package",
+    "name": "pkg:maven/com.github.chain-of-trust-lab/rest-api@0.0.1-32f62178379e",
+    "digest": "sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
+    "step": "deliver-package",
+    "location": "https://maven.pkg.github.com/chain-of-trust-lab/rest-api/com/github/chain-of-trust-lab/rest-api/0.0.1-32f62178379e/rest-api-0.0.1-32f62178379e.jar",
+    "registry": "https://maven.pkg.github.com",
     "previousCredential": {
-      "id": "urn:uuid:014b942e-794b-5cb0-a146-e2acd219d176",
-      "credentialDigest": "sha256:584f469e4fd4c5722bcfaeb0d62f9f49ee68254fa19267d7635f906489538137"
+      "id": "urn:uuid:891ded13-7cd8-51d5-b6c8-ebc0116dbcab",
+      "credentialDigest": "sha256:5dca3b3d2c96ef4462e69a02de335030a94fffaa509170d6adf86252ad107b75"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
@@ -39,8 +39,8 @@
   "proof": {
     "type": "Ed25519Signature2018",
     "verificationMethod": "did:sov:3pH8iriDney9f4b2WBAFY9#key-1",
-    "created": "2026-11-19T09:28:19+00:00",
+    "created": "2026-11-19T09:21:40+00:00",
     "proofPurpose": "assertionMethod",
-    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..m4nSkuHmk2nl7oXTC9Uox60M1W8M2QSPkovyaQDv4Yfc10icw-ITfV_xEtTob02iamXXyOo4-THrG2yOVMnZDw"
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..ZhfzFfKgygGWw6E8zBKi4nnLFCYEAtbLyjMBAFkTejfCxqWfsiRq8FCsvC1m7QIJGK91L_m3WFrAMWH__p7BDA"
   }
 }

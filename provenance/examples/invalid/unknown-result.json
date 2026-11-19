@@ -3,7 +3,7 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
   ],
-  "id": "urn:uuid:fcebbc12-34e1-55d7-8ab5-8c40c462ebcd",
+  "id": "urn:uuid:891ded13-7cd8-51d5-b6c8-ebc0116dbcab",
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
@@ -24,8 +24,8 @@
     "result": "Unknown",
     "reportDigest": "sha256:62d963b0cb030b6c2836dcb7257ae211232153d56a4524143b4ee6529ecc6ff1",
     "previousCredential": {
-      "id": "urn:uuid:891ded13-7cd8-51d5-b6c8-ebc0116dbcab",
-      "credentialDigest": "sha256:a9343ac2d6ea1cc451523b9f4ecf5e96cbd3d940b09ba68c40900fbf1efcd2ab"
+      "id": "urn:uuid:e7c4f4d3-79e0-58cf-920a-009cb9436424",
+      "credentialDigest": "sha256:8bc7580fa9770649eb030a93ab5855173f00b79a49cea2cca9d9575df1909339"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",

@@ -3,14 +3,14 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://chain-of-trust-lab.github.io/contexts/provenance/v1.jsonld"
   ],
-  "id": "urn:uuid:ff3d49df-2c55-5aac-8fea-d84a0f1cfa69",
+  "id": "urn:uuid:1e814b14-079b-5065-a215-4413eef30242",
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
-    "ImageBuiltCredential"
+    "ImageApprovedCredential"
   ],
-  "issuer": "did:sov:29XjXQCyrW8KiqqWg4dAkV",
-  "issuanceDate": "2026-11-19T09:24:12Z",
+  "issuer": "did:sov:LyT4sf2XNxvcquAKA2M2Db",
+  "issuanceDate": "2026-11-19T10:02:44Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
@@ -20,18 +20,12 @@
     "type": "DeployableImage",
     "name": "ghcr.io/chain-of-trust-lab/rest-api:0.0.1-32f62178379e",
     "digest": "sha256:2a1ec909d4c852ba592b387e6dea0269f3840d9712816e2bcc8fa9c283198064",
-    "step": "build-image",
-    "inputs": [
-      {
-        "id": "urn:sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
-        "type": "Package",
-        "name": "pkg:maven/com.github.chain-of-trust-lab/rest-api@0.0.1-32f62178379e",
-        "digest": "sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13"
-      }
-    ],
+    "step": "approve",
+    "decision": "Approved",
+    "environment": "Production",
     "previousCredential": {
-      "id": "urn:uuid:e521c126-a712-5934-9d2a-32548746093a",
-      "credentialDigest": "sha256:324d0699d661b881e9a3479b511ed0c5d80ae96c986342b7582f1e37974726e7"
+      "id": "urn:uuid:014b942e-794b-5cb0-a146-e2acd219d176",
+      "credentialDigest": "sha256:9ca103f86bd6587409522d3df3fc72183f17e4d16a599d9b491ba588318f5212"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
@@ -44,9 +38,9 @@
   },
   "proof": {
     "type": "Ed25519Signature2018",
-    "verificationMethod": "did:sov:29XjXQCyrW8KiqqWg4dAkV#key-1",
-    "created": "2026-11-19T09:24:12+00:00",
+    "verificationMethod": "did:sov:LyT4sf2XNxvcquAKA2M2Db#key-1",
+    "created": "2026-11-19T10:02:44+00:00",
     "proofPurpose": "assertionMethod",
-    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..swh6Fidpjq6XZIbOwj_6EbFmMCSTzRpFOnOe4GJwhYw8SAQ3mhs5-SPF4oU1wEWVWdLIiBT2CfMHgEB8gPvGAg"
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..Qz2iz_hb2Zk2eD8L-GjnO49gevC97Y0PJUOddQomC07DnPn5OoCbjNqzM6GkWfyh0Ldjb5my_2jfh255GLICDA"
   }
 }

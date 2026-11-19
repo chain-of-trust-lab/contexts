@@ -7,10 +7,10 @@
   "type": [
     "VerifiableCredential",
     "ProvenanceCredential",
-    "PackageBuiltCredential"
+    "PackageTestedCredential"
   ],
-  "issuer": "did:sov:29XjXQCyrW8KiqqWg4dAkV",
-  "issuanceDate": "2026-11-19T09:18:31Z",
+  "issuer": "did:sov:C1wnJ6gyFZdmN4smVAyCoV",
+  "issuanceDate": "2026-11-19T09:20:05Z",
   "credentialSchema": {
     "id": "https://chain-of-trust-lab.github.io/contexts/provenance/v1.schema.json",
     "type": "JsonSchemaValidator2018"
@@ -20,19 +20,12 @@
     "type": "Package",
     "name": "pkg:maven/com.github.chain-of-trust-lab/rest-api@0.0.1-32f62178379e",
     "digest": "sha256:0517e61b0f0ac689d20a43ee05f6608c3977d3c20afa71b9969c465fcb0f0a13",
-    "step": "build-package",
-    "inputs": [
-      {
-        "id": "urn:git:sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91",
-        "type": "SourceRevision",
-        "name": "https://github.com/chain-of-trust-lab/rest-api",
-        "digest": "sha1:32f62178379ee28d915fbbeaa0e2ed2e8cfc4a91"
-      }
-    ],
-    "sbomDigest": "sha256:451637781729039884e3770dfc8fa20aab79d984426fc3780238e011c74c3d33",
+    "step": "test-package",
+    "result": "Passed",
+    "reportDigest": "sha256:62d963b0cb030b6c2836dcb7257ae211232153d56a4524143b4ee6529ecc6ff1",
     "previousCredential": {
       "id": "urn:uuid:e7c4f4d3-79e0-58cf-920a-009cb9436424",
-      "credentialDigest": "sha256:e19b29dca39ca30662f270d8d669a427f3bf74e40608dd164e80d7d3436a808f"
+      "credentialDigest": "sha256:8bc7580fa9770649eb030a93ab5855173f00b79a49cea2cca9d9575df1909339"
     },
     "pipelineRun": {
       "id": "https://github.com/chain-of-trust-lab/rest-api/actions/runs/19482736105/attempts/1",
@@ -45,9 +38,9 @@
   },
   "proof": {
     "type": "Ed25519Signature2018",
-    "verificationMethod": "did:sov:29XjXQCyrW8KiqqWg4dAkV#key-1",
-    "created": "2026-11-19T09:18:31+00:00",
+    "verificationMethod": "did:sov:C1wnJ6gyFZdmN4smVAyCoV#key-1",
+    "created": "2026-11-19T09:20:05+00:00",
     "proofPurpose": "assertionMethod",
-    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..RfWf7pjqJNdG-QW-29ba4HBkYQ9__664c-K5ZdW2AetHzveEB_3TFXX3ooGy7OR_IbabjJ9PZqUnh99-xeTZBw"
+    "jws": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..RC6G2HBRhbJlKpv0I3mpmhAFlGBbYQcl0jy-rrodbRp39w8rh_wpRuQo7xfc7Gmp-Tomxf8dedbw4k45cgwDAQ"
   }
 }

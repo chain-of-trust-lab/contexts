@@ -53,7 +53,6 @@
         "step": {
           "enum": [
             "commit",
-            "test-code",
             "build-package",
             "test-package",
             "deliver-package",
@@ -125,21 +124,6 @@
       }
     },
     {
-      "if": { "$ref": "#/$defs/isType", "properties": { "type": { "contains": { "const": "SourceTestedCredential" } } } },
-      "then": {
-        "properties": {
-          "credentialSubject": {
-            "properties": { "step": { "const": "test-code" }, "type": { "const": "SourceRevision" } },
-            "required": ["previousCredential", "result", "reportDigest"],
-            "not": { "anyOf": [
-              { "required": ["location"] }, { "required": ["inputs"] }, { "required": ["sbomDigest"] },
-              { "required": ["registry"] }, { "required": ["decision"] }, { "required": ["environment"] }
-            ] }
-          }
-        }
-      }
-    },
-    {
       "if": { "$ref": "#/$defs/isType", "properties": { "type": { "contains": { "const": "PackageBuiltCredential" } } } },
       "then": {
         "properties": {
@@ -149,10 +133,10 @@
               "type": { "const": "Package" },
               "inputs": { "items": { "properties": { "type": { "const": "SourceRevision" } } } }
             },
-            "required": ["previousCredential", "inputs", "sbomDigest"],
+            "required": ["previousCredential", "inputs", "sbomDigest", "reportDigest"],
             "not": { "anyOf": [
-              { "required": ["location"] }, { "required": ["result"] }, { "required": ["reportDigest"] },
-              { "required": ["registry"] }, { "required": ["decision"] }, { "required": ["environment"] }
+              { "required": ["location"] }, { "required": ["result"] }, { "required": ["registry"] },
+              { "required": ["decision"] }, { "required": ["environment"] }
             ] }
           }
         }
@@ -275,7 +259,6 @@
     "stepCredentialType": {
       "enum": [
         "SourceCommittedCredential",
-        "SourceTestedCredential",
         "PackageBuiltCredential",
         "PackageTestedCredential",
         "PackagePublishedCredential",
